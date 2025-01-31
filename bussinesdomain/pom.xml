@@ -39,8 +39,8 @@
     <dependencies>
         <!-- manage all realate to links on REST resources-->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-webflux</artifactId>          
+         <groupId>org.springframework.boot</groupId>
+         <artifactId>spring-boot-starter-webflux</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -98,7 +98,7 @@
             <artifactId>javafaker</artifactId>
             <version>1.0.2</version>
         </dependency>
-
+        
     <!-- <exclusions>
         <exclusion>
             <groupId>org.yaml</groupId>
@@ -108,7 +108,7 @@
     </dependencies>
 
 
- <modules>
+    <modules>
         <module>customer</module>
         <module>product</module>
     </modules>
