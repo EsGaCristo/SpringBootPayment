@@ -1,0 +1,63 @@
+package com.paymentchain.transaction.controller;
+
+import java.util.List;
+
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.paymentchain.transaction.entities.Transaction;
+import com.paymentchain.transaction.repository.TransactionRepository;
+
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PostMapping;
+
+
+
+
+/**
+ * @author cristo
+ */
+
+@RestController
+@RequestMapping("/transaction")
+public class TransactionRestController {
+
+    @Autowired
+    TransactionRepository transactionRepository;
+
+    @GetMapping()
+    public List<Transaction> list() {
+        return transactionRepository.findAll();
+    }
+    @GetMapping("/{id}")
+    public Transaction get(@PathVariable ("id") Long id) {
+        return transactionRepository.findById(id).get();
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<?> put(@PathVariable ("id") Long id, @RequestBody Transaction input) {
+        Transaction find = transactionRepository.findById(id).orElseThrow(()-> new RuntimeException("Transaction not found"));
+        BeanUtils.copyProperties(input, find,"id");
+        Transaction save = transactionRepository.save(find);
+        return ResponseEntity.ok(save);
+    }
+    @PostMapping()
+    public ResponseEntity<?> post(@RequestBody Transaction input) {
+        Transaction save = transactionRepository.save(input);
+
+        return ResponseEntity.ok(save);
+    }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> delete(@PathVariable ("id") Long id){
+        transactionRepository.deleteById(id);
+        return ResponseEntity.ok().build();
+    }
+        
+}

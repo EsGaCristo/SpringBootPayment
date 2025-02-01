@@ -10,6 +10,8 @@ import com.paymentchain.product.repository.ProductRepository;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
+
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -42,7 +44,9 @@ public class ProductRestController {
     
     @PutMapping("/{id}")
     public ResponseEntity<?> put(@PathVariable ("id") long id , @RequestBody Product input) {
-        Product save = productRepository.save(input);
+        Product find = productRepository.findById(id).orElseThrow(()-> new RuntimeException("Product not found"));   
+        BeanUtils.copyProperties(input, find,"id");
+        Product save = productRepository.save(find);
         return ResponseEntity.ok(save);
     }
     

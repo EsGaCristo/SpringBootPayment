@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "TransactionApplication",
+            "request": "launch",
+            "mainClass": "com.paymentchain.bussinesdomain.TransactionApplication",
+            "projectName": "transaction"
+        },
+        {
+            "type": "java",
             "name": "Spring Boot-ProductAplication<product>",
             "request": "launch",
             "cwd": "${workspaceFolder}",
@@ -17,6 +24,16 @@
             "cwd": "${workspaceFolder}",
             "mainClass": "com.paymentchain.customer.CustomerApplication",
             "projectName": "customer",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-TransactionApplication<transaction>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.paymentchain.transaction.TransactionApplication",
+            "projectName": "transaction",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
         }
