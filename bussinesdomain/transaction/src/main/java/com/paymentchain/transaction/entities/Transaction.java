@@ -18,16 +18,33 @@ import lombok.Data;
 @Entity
 public class Transaction {
 
+@Id    
 @GeneratedValue(strategy = GenerationType.AUTO)
-@Id
 private long id;
-private String reference ,accountIban,description;
-private Date date;
-private double amount, fee;
 
+//Identificador unico de la transaccion del negocion
+private String reference; 
+
+// Numero de cuenta bancaria del cliente
+private String accountIban;
+
+//Monto de la transaccion, si el valor es negativo sera un debito
+private double amount;
+
+// Comision de la transaccion
+private double fee;
+
+// Descripcion de la transaccion
+private String description;
+
+//Pues la fecha
+private Date date;
+
+// Pendiente, liquidada,rechazada, cancelada
 @Enumerated(EnumType.ORDINAL)
 private Status status;
 
+//Medio por el que se hizo (web,cajero,oficina)
 @Enumerated(EnumType.ORDINAL)
 private Channel channel;
 

@@ -21,6 +21,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -109,9 +110,11 @@ public class CustomerRestController {
             String productName = getProductName(x.getId());
             x.setProdcutName(productName);
         });
+        //Borrar esto
+        getTransaction();
         return customer;
     }
-    
+
     private String getProductName(long id){
         WebClient build = webClientBuilder.clientConnector(new ReactorClientHttpConnector(client))
                 .baseUrl("http://localhost:8083/product")
@@ -122,5 +125,9 @@ public class CustomerRestController {
                 .retrieve().bodyToMono(JsonNode.class).block();
         String name = block.get("name").asText();
         return name;
+    }
+    private List<?> getTransaction(){
+        
+        return new ArrayList<>();
     }
 }

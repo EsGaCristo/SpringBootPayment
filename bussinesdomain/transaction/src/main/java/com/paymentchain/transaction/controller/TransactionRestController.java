@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 
@@ -40,7 +42,11 @@ public class TransactionRestController {
     public Transaction get(@PathVariable ("id") Long id) {
         return transactionRepository.findById(id).get();
     }
-
+    @GetMapping("/iban")
+    public Transaction[] getByIban(@RequestParam ("iban") String iban) {
+        transactionRepository.findByAccountIban(iban);
+        return transactionRepository.findByAccountIban(iban);
+    }
     @PutMapping("/{id}")
     public ResponseEntity<?> put(@PathVariable ("id") Long id, @RequestBody Transaction input) {
         Transaction find = transactionRepository.findById(id).orElseThrow(()-> new RuntimeException("Transaction not found"));
@@ -51,7 +57,6 @@ public class TransactionRestController {
     @PostMapping()
     public ResponseEntity<?> post(@RequestBody Transaction input) {
         Transaction save = transactionRepository.save(input);
-
         return ResponseEntity.ok(save);
     }
     @DeleteMapping("/{id}")
