@@ -1,13 +1,18 @@
 package com.paymentchain.transaction.controller;
 
+import java.util.Date;
 import java.util.List;
+
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
+import com.paymentchain.transaction.entities.Status;
 import com.paymentchain.transaction.entities.Transaction;
 import com.paymentchain.transaction.repository.TransactionRepository;
 
@@ -56,6 +61,7 @@ public class TransactionRestController {
     }
     @PostMapping()
     public ResponseEntity<?> post(@RequestBody Transaction input) {
+        transactionsValidated(input);
         Transaction save = transactionRepository.save(input);
         return ResponseEntity.ok(save);
     }
@@ -64,5 +70,17 @@ public class TransactionRestController {
         transactionRepository.deleteById(id);
         return ResponseEntity.ok().build();
     }
-        
+
+    private void  transactionsValidated(Transaction input){
+        if(input.getFee()>0){
+            input.setAmount(input.getAmount() - input.getFee());
+        }
+        if(input.getAmount()<0){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "El monto no puede ser negativo");
+        }
+        input.setStatus(Status.LIQUIDADA);
+        if(input.getDate().compareTo(new Date()) == 1 ){
+            input.setStatus(Status.PENDIENTE);
+        }  
+    }    
 }

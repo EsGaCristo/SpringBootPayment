@@ -126,6 +126,7 @@ public class CustomerRestController {
         String name = block.get("name").asText();
         return name;
     }
+    /* AQUI MERENGUES */
     private List<?> getTransaction(){
         
         return new ArrayList<>();
