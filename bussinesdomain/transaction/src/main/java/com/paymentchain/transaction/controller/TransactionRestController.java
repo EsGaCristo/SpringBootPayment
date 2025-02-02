@@ -24,10 +24,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
-
-
-
 /**
  * @author cristo
  */
@@ -47,8 +43,8 @@ public class TransactionRestController {
     public Transaction get(@PathVariable ("id") Long id) {
         return transactionRepository.findById(id).get();
     }
-    @GetMapping("/iban")
-    public Transaction[] getByIban(@RequestParam ("iban") String iban) {
+    @GetMapping("/customer/transactions")
+    public List<Transaction> getByIban(@RequestParam ("iban") String iban) {
         transactionRepository.findByAccountIban(iban);
         return transactionRepository.findByAccountIban(iban);
     }

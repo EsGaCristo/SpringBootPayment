@@ -18,6 +18,7 @@ import reactor.netty.http.client.HttpClient;
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.reactive.function.client.WebClient;
+import org.springframework.web.util.UriBuilder;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.time.Duration;
@@ -110,8 +111,9 @@ public class CustomerRestController {
             String productName = getProductName(x.getId());
             x.setProdcutName(productName);
         });
-        //Borrar esto
-        getTransaction();
+        List<?> transactions = getTransactions(customer.getIban());
+        customer.setTransactions(transactions);
+
         return customer;
     }
 
@@ -127,8 +129,16 @@ public class CustomerRestController {
         return name;
     }
     /* AQUI MERENGUES */
-    private List<?> getTransaction(){
-        
-        return new ArrayList<>();
+    private List<?> getTransactions(String iban){
+        WebClient build = webClientBuilder.clientConnector(new ReactorClientHttpConnector(client))
+                .baseUrl("http://localhost:8082/transaction")
+                .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+                .build();
+        List<?> transactions = build.method(HttpMethod.GET).uri(uriBuilder-> uriBuilder
+                .path("/customer/transactions")
+                .queryParam("iban", iban)
+                .build())
+                .retrieve().bodyToFlux(Object.class).collectList().block();                
+        return transactions;
     }
 }
