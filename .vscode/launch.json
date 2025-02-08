@@ -2,6 +2,27 @@
     "configurations": [
         {
             "type": "java",
+            "name": "ConfigserverApplication",
+            "request": "launch",
+            "mainClass": "com.paymentchain.infrestrucuture.configserver.ConfigserverApplication",
+            "projectName": "configserver"
+        },
+        {
+            "type": "java",
+            "name": "configserverApplication",
+            "request": "launch",
+            "mainClass": "com.paymentchain.infrestrucuture.configserver.configserverApplication",
+            "projectName": "configserver"
+        },
+        {
+            "type": "java",
+            "name": "configserverApplication",
+            "request": "launch",
+            "mainClass": "com.paymentchain.infrestrucuture.configserverApplication",
+            "projectName": "configserver"
+        },
+        {
+            "type": "java",
             "name": "TransactionApplication",
             "request": "launch",
             "mainClass": "com.paymentchain.bussinesdomain.TransactionApplication",
@@ -34,6 +55,16 @@
             "cwd": "${workspaceFolder}",
             "mainClass": "com.paymentchain.transaction.TransactionApplication",
             "projectName": "transaction",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-Main<configserver>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.paymentchain.infrestrucuture.Main",
+            "projectName": "configserver",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
         }

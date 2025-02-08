@@ -1,1 +1,6 @@
-/home/cristo/Documentos/Springboot/paymentchainparent/bussinesdomain/transaction/src/main/java/com/paymentchain/bussinesdomain/TransactionApplication.java
+/home/cristo/Documentos/Springboot/paymentchainparent/bussinesdomain/transaction/src/main/java/com/paymentchain/transaction/TransactionApplication.java
+/home/cristo/Documentos/Springboot/paymentchainparent/bussinesdomain/transaction/src/main/java/com/paymentchain/transaction/controller/TransactionRestController.java
+/home/cristo/Documentos/Springboot/paymentchainparent/bussinesdomain/transaction/src/main/java/com/paymentchain/transaction/entities/Channel.java
+/home/cristo/Documentos/Springboot/paymentchainparent/bussinesdomain/transaction/src/main/java/com/paymentchain/transaction/entities/Status.java
+/home/cristo/Documentos/Springboot/paymentchainparent/bussinesdomain/transaction/src/main/java/com/paymentchain/transaction/entities/Transaction.java
+/home/cristo/Documentos/Springboot/paymentchainparent/bussinesdomain/transaction/src/main/java/com/paymentchain/transaction/repository/TransactionRepository.java

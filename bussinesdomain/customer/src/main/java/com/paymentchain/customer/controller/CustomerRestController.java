@@ -18,17 +18,16 @@ import reactor.netty.http.client.HttpClient;
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.reactive.function.client.WebClient;
-import org.springframework.web.util.UriBuilder;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.time.Duration;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
@@ -70,7 +69,15 @@ public class CustomerRestController {
         connection.addHandlerLast(new WriteTimeoutHandler(5000, TimeUnit.MILLISECONDS));
     });
     
+    @Autowired
+    private Environment env;
     
+    @GetMapping("/check")
+    public String check() {
+        return "Hello your property value is: "+env.getProperty("custom.activeprofileName");
+    }
+    
+
     @GetMapping()
     public List<Customer> list() {
         return customerRepository.findAll();

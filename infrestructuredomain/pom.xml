@@ -11,7 +11,10 @@
 
     <groupId>com.paymentchain.infrestrucuture</groupId>
     <artifactId>infrestructuredomain</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <modules>
+        <module>eureka</module>
+    </modules>
 
     <properties>
        <!--spring cloud version, please check the table https://spring.io/projects/spring-cloud compatibility version with spring boot framework-->
