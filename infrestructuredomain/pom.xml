@@ -13,7 +13,7 @@
     <artifactId>infrestructuredomain</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>eureka</module>
+        <module>eurekaServer</module>
     </modules>
 
     <properties>

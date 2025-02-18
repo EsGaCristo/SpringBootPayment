@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "eurekaApplication",
+            "request": "launch",
+            "mainClass": "com.paymentchain.infrestrucuture.eureka.eurekaApplication",
+            "projectName": "eureka"
+        },
+        {
+            "type": "java",
             "name": "ConfigserverApplication",
             "request": "launch",
             "mainClass": "com.paymentchain.infrestrucuture.configserver.ConfigserverApplication",
@@ -65,6 +72,16 @@
             "cwd": "${workspaceFolder}",
             "mainClass": "com.paymentchain.infrestrucuture.Main",
             "projectName": "configserver",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-EurekaApplication<eurekaServer>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.paymentchain.infrestrucuture.eureka.EurekaApplication",
+            "projectName": "eurekaServer",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
         }
