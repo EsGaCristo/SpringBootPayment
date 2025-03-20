@@ -43,7 +43,8 @@
             "mainClass": "com.paymentchain.product.ProductAplication",
             "projectName": "product",
             "args": "",
-            "envFile": "${workspaceFolder}/.env"
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=41303 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=product"
         },
         {
             "type": "java",
@@ -53,7 +54,8 @@
             "mainClass": "com.paymentchain.customer.CustomerApplication",
             "projectName": "customer",
             "args": "",
-            "envFile": "${workspaceFolder}/.env"
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=33817 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=customer"
         },
         {
             "type": "java",
@@ -63,7 +65,8 @@
             "mainClass": "com.paymentchain.transaction.TransactionApplication",
             "projectName": "transaction",
             "args": "",
-            "envFile": "${workspaceFolder}/.env"
+            "envFile": "${workspaceFolder}/.env",
+            "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=46115 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=transaction"
         },
         {
             "type": "java",
@@ -81,6 +84,16 @@
             "request": "launch",
             "cwd": "${workspaceFolder}",
             "mainClass": "com.paymentchain.infrestrucuture.eureka.EurekaApplication",
+            "projectName": "eurekaServer",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-EurekaServerApplication<eurekaServer>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.paymentchain.infrestrucuture.eureka.EurekaServerApplication",
             "projectName": "eurekaServer",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
